@@ -1,13 +1,22 @@
 public class PalindromeCheckerApp {
+
     public static void main(String[] args) {
 
-        System.out.println("=======================================");
-        System.out.println("      Welcome to PalindromeChecker     ");
-        System.out.println("=======================================");
+        // Hardcoded input
+        String input = "madam";
 
-        System.out.println("Application Name : PalindromeChecker App");
-        System.out.println("Version          : 1.0.0");
+        // Reverse the string
+        String reversed = "";
 
-        System.out.println("Application started successfully.");
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed = reversed + input.charAt(i);
+        }
+
+        // Check palindrome
+        boolean isPalindrome = input.equals(reversed);
+
+        // Print output in required format
+        System.out.println("input text: " + input);
+        System.out.println("Is it a palindrome? : " + isPalindrome);
     }
 }
