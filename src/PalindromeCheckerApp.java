@@ -1,30 +1,41 @@
 
-public class PalindromeCheckerApp {
+import java.util.Scanner;
 
-    // Recursive Method
-    public static boolean isPalindrome(String input, int start, int end) {
+    public class PalindromeCheckerApp {
 
-        // Base Condition: If pointers cross or meet
-        if (start >= end) {
+        public static boolean isPalindrome(String input) {
+
+            String normalized = input.replaceAll("\\s+", "").toLowerCase();
+
+            char[] arr = normalized.toCharArray();
+
+            int left = 0;
+            int right = arr.length - 1;
+
+            while (left < right) {
+                if (arr[left] != arr[right]) {
+                    return false;
+                }
+                left++;
+                right--;
+            }
+
             return true;
         }
 
-        // If characters do not match
-        if (input.charAt(start) != input.charAt(end)) {
-            return false;
+        public static void main(String[] args) {
+
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Enter a string:");
+            String input = scanner.nextLine();
+
+            if (isPalindrome(input)) {
+                System.out.println("The given string is a palindrome (ignoring spaces and case).");
+            } else {
+                System.out.println("The given string is not a palindrome.");
+            }
+
+            scanner.close();
         }
-
-        // Recursive Call (Move inward)
-        return isPalindrome(input, start + 1, end - 1);
     }
-
-    public static void main(String[] args) {
-
-        String input = "madam";
-
-        boolean result = isPalindrome(input, 0, input.length() - 1);
-
-        System.out.println("Input Text : " + input);
-        System.out.println("Is it a palindrome? : " + result);
-    }
-}
